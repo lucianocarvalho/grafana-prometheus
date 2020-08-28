@@ -16,6 +16,8 @@ services:
       - 9090
     ports:
       - "9090:9090"
+    networks:
+      - bubble
 
   nodeexporter:
     image: prom/node-exporter:latest
@@ -34,6 +36,8 @@ services:
       - 9100
     ports:
       - "9100:9100"
+    networks:
+      - bubble
 
   grafana:
    image: grafana/grafana:latest
@@ -48,7 +52,13 @@ services:
      - 3000
    ports:
      - 3000:3000
+   networks:
+     - bubble
 
 volumes:
     prometheus: {}
     grafana: {}
+
+networks:
+  bubble:
+    external: true
