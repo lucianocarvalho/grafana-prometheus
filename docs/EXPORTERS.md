@@ -52,3 +52,10 @@ docker run -ti --rm -d --network bubble -p 8888:8888 chronograf
 ```
 
 Abra **[http://localhost:8888](http://localhost:8888)** para acessá-lo.
+
+### MySQL Exporter
+
+```bash
+docker run -ti --rm -d -p 9104:9104 --link=container --network bubble \
+        -e DATA_SOURCE_NAME="root:root@(container:3306)/database" prom/mysqld-exporter
+```
